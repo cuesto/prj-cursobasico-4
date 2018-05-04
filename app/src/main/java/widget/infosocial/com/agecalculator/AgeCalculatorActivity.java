@@ -20,7 +20,9 @@ public class AgeCalculatorActivity extends AppCompatActivity implements DatePick
 
     private Calendar mCalendar;
 
-    private Boolean isBirthDateClicked;
+    private Boolean mIsBirthDateClicked;
+
+    private int mBirthYear, mActualYear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,22 +42,16 @@ public class AgeCalculatorActivity extends AppCompatActivity implements DatePick
         mActualDatePickerDialog = new DatePickerDialog(this, this, mCalendar.get(Calendar.YEAR), mCalendar.get(Calendar.MONTH), mCalendar.get(Calendar.DAY_OF_MONTH));
 
         findViewById(R.id.birthDate_pick).setOnClickListener(v -> {
-            isBirthDateClicked = true;
+            mIsBirthDateClicked = true;
             mBirthDatePickerDialog.show();
         });
         findViewById(R.id.actualDate_pick).setOnClickListener(v -> {
-            isBirthDateClicked = false;
+            mIsBirthDateClicked = false;
             mActualDatePickerDialog.show();
         });
         findViewById(R.id.cleanButton).setOnClickListener(v -> cleanDate());
+        findViewById(R.id.calculateDateButton).setOnClickListener(v -> calculateDate());
     }
-
-    private void cleanDate() {
-        mBirthDateDisplay.setText("dd/mm/yyyy");
-        mActualDateDisplay.setText("dd/mm/yyyy");
-        mLabelYear.setText("0");
-    }
-
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -65,13 +61,26 @@ public class AgeCalculatorActivity extends AppCompatActivity implements DatePick
         refreshDate();
     }
 
-
     private void refreshDate() {
-        if (isBirthDateClicked) {
+        if (mIsBirthDateClicked) {
             mBirthDateDisplay.setText(mBirthDateFormat.format(mCalendar.getTime()));
         } else {
             mActualDateDisplay.setText(mBirthDateFormat.format(mCalendar.getTime()));
         }
+    }
+
+    private void cleanDate() {
+        mBirthDateDisplay.setText("dd/mm/yyyy");
+        mActualDateDisplay.setText("dd/mm/yyyy");
+        mLabelYear.setText("0");
+    }
+
+    private void calculateDate() {
+        mBirthYear = mBirthDatePickerDialog.getDatePicker().getYear();
+        mActualYear = mActualDatePickerDialog.getDatePicker().getYear();
+
+        mLabelYear.setText( Math.abs(mBirthYear-mActualYear) + "" );
+
     }
 
 }

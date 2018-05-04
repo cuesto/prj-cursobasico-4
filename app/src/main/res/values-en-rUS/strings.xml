@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Age Calculator</string>
+    <string name="birth_date">Birth Date</string>
+    <string name="missing_image">date</string>
+    <string name="actual_date">Actual Date</string>
+    <string name="btn_clean">Clean</string>
+    <string name="btn_calculate">Calculate</string>
+    <string name="label_age_title">Age</string>
+</resources>

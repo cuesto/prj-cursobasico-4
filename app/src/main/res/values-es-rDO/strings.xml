@@ -1,8 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Age Calculator</string>
-    <string name="label_date" translatable="false">dd/mm/yyyy</string>
+    <string name="app_name">Calculadora de Edad</string>
     <string name="birth_date">Fecha de Nacimiento</string>
-    <string name="missing_image">date</string>
+    <string name="missing_image">fecha</string>
     <string name="actual_date">Fecha Actual</string>
     <string name="btn_clean">Limpiar</string>
     <string name="btn_calculate">Calcular</string>

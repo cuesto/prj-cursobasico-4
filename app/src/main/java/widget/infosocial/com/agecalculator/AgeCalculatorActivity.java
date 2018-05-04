@@ -12,7 +12,7 @@ import java.util.Locale;
 
 public class AgeCalculatorActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
-    private TextView mBirthDateDisplay, mActualDateDisplay;
+    private TextView mBirthDateDisplay, mActualDateDisplay, mLabelYear;
 
     private SimpleDateFormat mBirthDateFormat, mActualDateFormat;
 
@@ -34,6 +34,7 @@ public class AgeCalculatorActivity extends AppCompatActivity implements DatePick
 
         mBirthDateDisplay = findViewById(R.id.birthDate_display);
         mActualDateDisplay = findViewById(R.id.actualDate_display);
+        mLabelYear = findViewById(R.id.LabelYear);
 
         mBirthDatePickerDialog = new DatePickerDialog(this, this, mCalendar.get(Calendar.YEAR), mCalendar.get(Calendar.MONTH), mCalendar.get(Calendar.DAY_OF_MONTH));
         mActualDatePickerDialog = new DatePickerDialog(this, this, mCalendar.get(Calendar.YEAR), mCalendar.get(Calendar.MONTH), mCalendar.get(Calendar.DAY_OF_MONTH));
@@ -46,6 +47,13 @@ public class AgeCalculatorActivity extends AppCompatActivity implements DatePick
             isBirthDateClicked = false;
             mActualDatePickerDialog.show();
         });
+        findViewById(R.id.cleanButton).setOnClickListener(v -> cleanDate());
+    }
+
+    private void cleanDate() {
+        mBirthDateDisplay.setText("dd/mm/yyyy");
+        mActualDateDisplay.setText("dd/mm/yyyy");
+        mLabelYear.setText("0");
     }
 
 

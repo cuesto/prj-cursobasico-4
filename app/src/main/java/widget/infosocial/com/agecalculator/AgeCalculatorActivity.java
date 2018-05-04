@@ -32,12 +32,12 @@ public class AgeCalculatorActivity extends AppCompatActivity implements DatePick
         mDateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         mDateTimeFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
 
-        mDateDisplay = findViewById(R.id.date_display);
+        mDateDisplay = findViewById(R.id.birthDate_display);
         mDateTimeDisplay = findViewById(R.id.date_time_display);
 
         mDatePickerDialog = new DatePickerDialog(this, this, mCalendar.get(Calendar.YEAR), mCalendar.get(Calendar.MONTH), mCalendar.get(Calendar.DAY_OF_MONTH));
 
-        findViewById(R.id.date_pick).setOnClickListener(v -> mDatePickerDialog.show());
+        findViewById(R.id.birthDate_pick).setOnClickListener(v -> mDatePickerDialog.show());
 
         //refreshDateTime();
     }

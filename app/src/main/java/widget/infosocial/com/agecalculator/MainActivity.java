@@ -9,8 +9,6 @@ import android.view.WindowManager;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final int DURACION_SPLASH = 1500;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,13 +16,12 @@ public class MainActivity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
-        new Handler().postDelayed(new Runnable() {
-            public void run() {
-                Intent intent = new Intent(MainActivity.this, AgeCalculatorActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        }, DURACION_SPLASH);
+        int DURATION_SPLASH = 1500;
+        new Handler().postDelayed(() -> {
+            Intent intent = new Intent(MainActivity.this, AgeCalculatorActivity.class);
+            startActivity(intent);
+            finish();
+        }, DURATION_SPLASH);
 
     }
 }

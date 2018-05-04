@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Age Calculator</string>
+    <string name="label_date">dd/mm/yyyy</string>
+    <string name="birth_date">Fecha de Nacimiento</string>
+    <string name="missing_image">date</string>
+    <string name="actual_date">Fecha Actual</string>
+    <string name="btn_clean">Limpiar</string>
+    <string name="btn_calculate">Calcular</string>
+    <string name="label_age_title">Edad</string>
 </resources>

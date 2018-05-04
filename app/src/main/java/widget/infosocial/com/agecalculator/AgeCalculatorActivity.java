@@ -14,15 +14,13 @@ public class AgeCalculatorActivity extends AppCompatActivity implements DatePick
 
     private TextView mBirthDateDisplay, mActualDateDisplay, mLabelYear;
 
-    private SimpleDateFormat mBirthDateFormat, mActualDateFormat;
+    private SimpleDateFormat mDateFormat;
 
     private DatePickerDialog mBirthDatePickerDialog, mActualDatePickerDialog;
 
     private Calendar mCalendar;
 
     private Boolean mIsBirthDateClicked;
-
-    private int mBirthYear, mActualYear;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +29,7 @@ public class AgeCalculatorActivity extends AppCompatActivity implements DatePick
 
         mCalendar = Calendar.getInstance();
 
-        mBirthDateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-        mActualDateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        mDateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
 
         mBirthDateDisplay = findViewById(R.id.birthDate_display);
         mActualDateDisplay = findViewById(R.id.actualDate_display);
@@ -63,23 +60,23 @@ public class AgeCalculatorActivity extends AppCompatActivity implements DatePick
 
     private void refreshDate() {
         if (mIsBirthDateClicked) {
-            mBirthDateDisplay.setText(mBirthDateFormat.format(mCalendar.getTime()));
+            mBirthDateDisplay.setText(mDateFormat.format(mCalendar.getTime()));
         } else {
-            mActualDateDisplay.setText(mBirthDateFormat.format(mCalendar.getTime()));
+            mActualDateDisplay.setText(mDateFormat.format(mCalendar.getTime()));
         }
     }
 
     private void cleanDate() {
-        mBirthDateDisplay.setText("dd/mm/yyyy");
-        mActualDateDisplay.setText("dd/mm/yyyy");
+        mBirthDateDisplay.setText(R.string.label_date);
+        mActualDateDisplay.setText(R.string.label_date);
         mLabelYear.setText("0");
     }
 
     private void calculateDate() {
-        mBirthYear = mBirthDatePickerDialog.getDatePicker().getYear();
-        mActualYear = mActualDatePickerDialog.getDatePicker().getYear();
+        int mBirthYear = mBirthDatePickerDialog.getDatePicker().getYear();
+        int mActualYear = mActualDatePickerDialog.getDatePicker().getYear();
 
-        mLabelYear.setText( Math.abs(mBirthYear-mActualYear) + "" );
+        mLabelYear.setText(String.valueOf(Math.abs(mBirthYear - mActualYear)));
 
     }
 

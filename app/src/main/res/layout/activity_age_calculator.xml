@@ -24,7 +24,7 @@
             style="@style/LabelFont"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Fecha de Nacimiento" />
+            android:text="@string/birth_date" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,6 +35,7 @@
             <ImageButton
                 android:id="@+id/birthDate_pick"
                 style="@style/DatePicker"
+                android:contentDescription="@string/missing_image"
                 android:src="@drawable/cake" />
 
             <TextView
@@ -63,7 +64,7 @@
             style="@style/LabelFont"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Fecha Actual" />
+            android:text="@string/actual_date" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -74,6 +75,7 @@
             <ImageButton
                 android:id="@+id/actualDate_pick"
                 style="@style/DatePicker"
+                android:contentDescription="@string/missing_image"
                 android:src="@drawable/calendar" />
 
             <TextView
@@ -104,7 +106,8 @@
             android:layout_margin="6dp"
             android:layout_weight="1"
             android:background="@android:color/darker_gray"
-            android:text="Limpiar" />
+            android:text="@string/btn_clean"
+            tools:ignore="ButtonStyle" />
 
         <Button
             android:id="@+id/calculateDateButton"
@@ -113,8 +116,9 @@
             android:layout_margin="6dp"
             android:layout_weight="1"
             android:background="#3F51B5"
-            android:text="Calcular"
-            android:textColor="@android:color/white" />
+            android:text="@string/btn_calculate"
+            android:textColor="@android:color/white"
+            tools:ignore="ButtonStyle" />
     </LinearLayout>
 
 
@@ -138,14 +142,13 @@
                 style="@style/LabelResultTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Edad" />
+                android:text="@string/label_age_title" />
 
             <TextView
                 android:id="@+id/LabelYear"
                 style="@style/LabelResult"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
 
     </LinearLayout>

@@ -1,26 +1,26 @@
 package widget.infosocial.com.agecalculator;
 
 import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.DatePicker;
 import android.widget.TextView;
-import android.widget.TimePicker;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
-public class AgeCalculatorActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
+public class AgeCalculatorActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
-    private TextView mDateDisplay, mDateTimeDisplay;
+    private TextView mBirthDateDisplay, mActualDateDisplay;
 
-    private SimpleDateFormat mDateFormat, mDateTimeFormat;
+    private SimpleDateFormat mBirthDateFormat, mActualDateFormat;
 
-    private DatePickerDialog mDatePickerDialog;
+    private DatePickerDialog mBirthDatePickerDialog, mActualDatePickerDialog;
 
     private Calendar mCalendar;
+
+    private Boolean isBirthDateClicked;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,17 +29,23 @@ public class AgeCalculatorActivity extends AppCompatActivity implements DatePick
 
         mCalendar = Calendar.getInstance();
 
-        mDateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-        mDateTimeFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        mBirthDateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        mActualDateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
 
-        mDateDisplay = findViewById(R.id.birthDate_display);
-        mDateTimeDisplay = findViewById(R.id.date_time_display);
+        mBirthDateDisplay = findViewById(R.id.birthDate_display);
+        mActualDateDisplay = findViewById(R.id.actualDate_display);
 
-        mDatePickerDialog = new DatePickerDialog(this, this, mCalendar.get(Calendar.YEAR), mCalendar.get(Calendar.MONTH), mCalendar.get(Calendar.DAY_OF_MONTH));
+        mBirthDatePickerDialog = new DatePickerDialog(this, this, mCalendar.get(Calendar.YEAR), mCalendar.get(Calendar.MONTH), mCalendar.get(Calendar.DAY_OF_MONTH));
+        mActualDatePickerDialog = new DatePickerDialog(this, this, mCalendar.get(Calendar.YEAR), mCalendar.get(Calendar.MONTH), mCalendar.get(Calendar.DAY_OF_MONTH));
 
-        findViewById(R.id.birthDate_pick).setOnClickListener(v -> mDatePickerDialog.show());
-
-        //refreshDateTime();
+        findViewById(R.id.birthDate_pick).setOnClickListener(v -> {
+            isBirthDateClicked = true;
+            mBirthDatePickerDialog.show();
+        });
+        findViewById(R.id.actualDate_pick).setOnClickListener(v -> {
+            isBirthDateClicked = false;
+            mActualDatePickerDialog.show();
+        });
     }
 
 
@@ -48,15 +54,16 @@ public class AgeCalculatorActivity extends AppCompatActivity implements DatePick
         mCalendar.set(Calendar.YEAR, year);
         mCalendar.set(Calendar.MONTH, month);
         mCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-        refreshDateTime();
+        refreshDate();
     }
 
 
-
-    private void refreshDateTime() {
-        mDateDisplay.setText(mDateFormat.format(mCalendar.getTime()));
-
-        mDateTimeDisplay.setText(mDateTimeFormat.format(mCalendar.getTime()));
+    private void refreshDate() {
+        if (isBirthDateClicked) {
+            mBirthDateDisplay.setText(mBirthDateFormat.format(mCalendar.getTime()));
+        } else {
+            mActualDateDisplay.setText(mBirthDateFormat.format(mCalendar.getTime()));
+        }
     }
 
 }

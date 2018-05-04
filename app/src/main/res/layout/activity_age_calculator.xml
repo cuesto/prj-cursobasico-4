@@ -98,7 +98,7 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayoutDate">
 
         <Button
-
+            android:id="@+id/cleanButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="6dp"
@@ -107,7 +107,7 @@
             android:text="Limpiar" />
 
         <Button
-
+            android:id="@+id/calculateDateButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="6dp"
@@ -147,19 +147,6 @@
                 android:text="26" />
         </LinearLayout>
 
-
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/date_time_display"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="dd/MM/yyyy"
-        android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayoutResult" />
-
 
 </android.support.constraint.ConstraintLayout>

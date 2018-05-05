@@ -1,5 +1,5 @@
-# Calculadora de Edad
+# Age Calculator
 
-Es una aplicación en Android que calcula la edad de una persona basada en dos fechas.
+It is an Android application that calculates a person's age based on two dates.
 
-Este es el proyecto final del curso de Android básico de Altice.
+This is the final project of the basic Android course on Altice.

@@ -8,4 +8,5 @@
     <string name="btn_calculate">Calculate</string>
     <string name="label_age_title">Age</string>
     <string name="w_future_date">The date of birth can not be greater than the current one.</string>
+    <string name="w_equal_date">The date must be from a different year.</string>
 </resources>

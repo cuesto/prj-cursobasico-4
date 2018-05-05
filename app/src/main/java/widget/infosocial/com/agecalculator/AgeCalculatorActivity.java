@@ -1,8 +1,8 @@
 package widget.infosocial.com.agecalculator;
 
 import android.app.DatePickerDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -79,7 +79,9 @@ public class AgeCalculatorActivity extends AppCompatActivity implements DatePick
 
         if (mBirthYear > mActualYear){
             Toast.makeText(this, R.string.w_future_date, Toast.LENGTH_LONG).show();
-        }else {
+        } else if (mBirthYear == mActualYear) {
+            Toast.makeText(this, R.string.w_equal_date, Toast.LENGTH_LONG).show();
+        } else {
             mLabelYear.setText(String.valueOf(Math.abs(mActualYear - mBirthYear)));
         }
     }

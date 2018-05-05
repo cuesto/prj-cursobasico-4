@@ -7,4 +7,5 @@
     <string name="btn_clean">Clean</string>
     <string name="btn_calculate">Calculate</string>
     <string name="label_age_title">Age</string>
+    <string name="w_future_date">The date of birth can not be greater than the current one.</string>
 </resources>

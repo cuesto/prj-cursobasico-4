@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.DatePicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -38,11 +39,11 @@ public class AgeCalculatorActivity extends AppCompatActivity implements DatePick
         mBirthDatePickerDialog = new DatePickerDialog(this, this, mCalendar.get(Calendar.YEAR), mCalendar.get(Calendar.MONTH), mCalendar.get(Calendar.DAY_OF_MONTH));
         mActualDatePickerDialog = new DatePickerDialog(this, this, mCalendar.get(Calendar.YEAR), mCalendar.get(Calendar.MONTH), mCalendar.get(Calendar.DAY_OF_MONTH));
 
-        findViewById(R.id.birthDate_pick).setOnClickListener(v -> {
+        mBirthDateDisplay.setOnClickListener(v -> {
             mIsBirthDateClicked = true;
             mBirthDatePickerDialog.show();
         });
-        findViewById(R.id.actualDate_pick).setOnClickListener(v -> {
+        mActualDateDisplay.setOnClickListener(v -> {
             mIsBirthDateClicked = false;
             mActualDatePickerDialog.show();
         });
@@ -69,15 +70,17 @@ public class AgeCalculatorActivity extends AppCompatActivity implements DatePick
     private void cleanDate() {
         mBirthDateDisplay.setText(R.string.label_date);
         mActualDateDisplay.setText(R.string.label_date);
-        mLabelYear.setText("0");
+        mLabelYear.setText(R.string.label_zero_age);
     }
 
     private void calculateDate() {
         int mBirthYear = mBirthDatePickerDialog.getDatePicker().getYear();
         int mActualYear = mActualDatePickerDialog.getDatePicker().getYear();
 
-        mLabelYear.setText(String.valueOf(Math.abs(mBirthYear - mActualYear)));
-
+        if (mBirthYear > mActualYear){
+            Toast.makeText(this, R.string.w_future_date, Toast.LENGTH_LONG).show();
+        }else {
+            mLabelYear.setText(String.valueOf(Math.abs(mActualYear - mBirthYear)));
+        }
     }
-
 }

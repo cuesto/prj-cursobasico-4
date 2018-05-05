@@ -148,7 +148,8 @@
                 android:id="@+id/LabelYear"
                 style="@style/LabelResult"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:text="@string/label_zero_age"/>
         </LinearLayout>
 
     </LinearLayout>
